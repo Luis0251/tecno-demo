@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import PersonRoundedIcon from "@mui/icons-material/PersonRounded";
 
-export const CarListItem = ({ img, vehicle, amount, desc, seat }) => {
+export const CarListItem = ({ img, vehicle, amount, desc, seat, distance }) => {
   return (
     <div>
       <div className="flex items-center justify-between mt-5 ">

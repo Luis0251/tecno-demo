@@ -27,7 +27,7 @@ export const SearchSection = () => {
   return (
     <>
       <div className="p-2 md:p-5 border-[2px] rounded-xl">
-        <p className="text-[20px] font-bold">Get a ride</p>
+        <p className="text-[20px] font-bold">A donde quieres ir</p>
         <InputItem type="source" />
         <InputItem type="destination" />
 
@@ -38,7 +38,7 @@ export const SearchSection = () => {
           Search
         </button>
       </div>
-      {distance ? <CarListOptions /> : null}
+      {distance ? <CarListOptions distance={distance} /> : null}
     </>
   );
 };

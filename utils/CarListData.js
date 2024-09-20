@@ -4,7 +4,7 @@ export const carListData = [
     name: "Taxi",
     image: "https://img.icons8.com/?size=100&id=15174&format=png&color=000000",
     seat: 4,
-    amount: 1.1,
+    amount: 1.5,
     desc: "Servicio de taxi de alta calidad",
   },
   {
@@ -13,7 +13,7 @@ export const carListData = [
     image:
       "https://img.icons8.com/?size=100&id=KX1EJ8mb4zzD&format=png&color=000000",
     seat: 4,
-    amount: 1.1,
+    amount: 1.4,
     desc: "carro de alta velocidad",
   },
   {

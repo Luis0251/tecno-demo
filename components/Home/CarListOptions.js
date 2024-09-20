@@ -4,7 +4,7 @@ import { CarListItem } from "./CarListItem";
 
 export const CarListOptions = () => {
   return (
-    <div className="mt-5">
+    <div className="mt-5 p-5 overflow-auto h-[250px]">
       <h2 className="text-[22px] font-bold">Recommended vehicles</h2>
       {carListData.map((item) => (
         <CarListItem

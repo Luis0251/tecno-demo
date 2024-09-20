@@ -5,7 +5,7 @@ export const carListData = [
     image: "https://img.icons8.com/?size=100&id=15174&format=png&color=000000",
     seat: 4,
     amount: 1.1,
-    desc: "Taxi",
+    desc: "Servicio de taxi de alta calidad",
   },
   {
     id: 2,
@@ -14,7 +14,7 @@ export const carListData = [
       "https://img.icons8.com/?size=100&id=KX1EJ8mb4zzD&format=png&color=000000",
     seat: 4,
     amount: 1.1,
-    desc: "Car",
+    desc: "carro de alta velocidad",
   },
   {
     id: 3,
@@ -22,6 +22,6 @@ export const carListData = [
     image: "https://img.icons8.com/?size=100&id=9334&format=png&color=000000",
     seat: 1,
     amount: 1.1,
-    desc: "Moto",
+    desc: "Moto de alta velocidad",
   },
 ];

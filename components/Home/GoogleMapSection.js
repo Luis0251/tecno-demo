@@ -1,7 +1,14 @@
 import React, { useContext, useEffect } from "react";
-import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  MarkerF,
+  OverlayView,
+  OverlayViewF,
+  useJsApiLoader,
+} from "@react-google-maps/api";
 import { SourceContext } from "@/context/SourceContex";
 import { DestinationContext } from "@/context/DestinationContext";
+
 export const GoogleMapSection = () => {
   const containerStyle = {
     width: "100%",
@@ -66,10 +73,41 @@ export const GoogleMapSection = () => {
     >
       {/* Child components, such as markers, info windows, etc. */}
       {source.length != [] ? (
-        <MarkerF position={{ lat: source.lat, lng: source.lng }} />
+        <MarkerF
+          position={{ lat: source.lat, lng: source.lng }}
+          icon={{
+            url: "https://img.icons8.com/?size=100&id=9d2CFNlQVpiu&format=png&color=000000",
+            scaledSize: new window.google.maps.Size(40, 40),
+          }}
+        >
+          <OverlayViewF
+            position={{ lat: source.lat, lng: source.lng }}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div className="p-2 bg-white rounded-lg font-bold inline-block">
+              <p className="text-black text-[16px]">{source.label}</p>
+            </div>
+          </OverlayViewF>
+        </MarkerF>
       ) : null}
-
-      <MarkerF position={{ lat: destination.lat, lng: destination.lng }} />
+      {destination.length != [] ? (
+        <MarkerF
+          position={{ lat: destination.lat, lng: destination.lng }}
+          icon={{
+            url: "https://img.icons8.com/?size=100&id=o06mPaIbZxLn&format=png&color=000000",
+            scaledSize: new window.google.maps.Size(40, 40),
+          }}
+        >
+          <OverlayViewF
+            position={{ lat: destination.lat, lng: destination.lng }}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div className="p-2 bg-white rounded-lg font-bold inline-block">
+              <p className="text-black text-[16px]">{destination.label}</p>
+            </div>
+          </OverlayViewF>
+        </MarkerF>
+      ) : null}
     </GoogleMap>
   );
 };

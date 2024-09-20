@@ -6,7 +6,7 @@ export const CarListOptions = ({ distance }) => {
   const [index, setIndex] = useState();
   return (
     <div className="mt-5 p-5 overflow-auto h-[250px]">
-      <h2 className="text-[22px] font-bold">Recommended vehicles</h2>
+      <h2 className="text-[22px] font-bold">Vehiculos recomendados</h2>
       {carListData.map((item) => (
         <div
           className={`cursor-pointer ${

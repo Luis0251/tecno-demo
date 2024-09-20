@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
+  DirectionsRenderer,
   GoogleMap,
   MarkerF,
   OverlayView,
@@ -28,6 +29,7 @@ export const GoogleMapSection = () => {
   const [center, setCenter] = React.useState({ lat: -3.745, lng: -38.523 });
   const { source, setSource } = useContext(SourceContext);
   const { destination, setDestination } = useContext(DestinationContext);
+  const [directionsRoutePoints, setDirectionsRoutePoints] = useState([]);
 
   useEffect(() => {
     if (source?.length != [] && map) {
@@ -40,6 +42,9 @@ export const GoogleMapSection = () => {
         lng: source.lng,
       });
     }
+    if (source.length != [] && destination.length != []) {
+      DirectionRoute();
+    }
   }, [source]);
 
   useEffect(() => {
@@ -49,7 +54,28 @@ export const GoogleMapSection = () => {
         lng: destination.lng,
       });
     }
+    if (source.length != [] && destination.length != []) {
+      DirectionRoute();
+    }
   }, [destination]);
+
+  const DirectionRoute = () => {
+    const directionService = new window.google.maps.DirectionsService();
+    directionService.route(
+      {
+        origin: { lat: source.lat, lng: source.lng },
+        destination: { lat: destination.lat, lng: destination.lng },
+        travelMode: window.google.maps.TravelMode.DRIVING,
+      },
+      (result, status) => {
+        if (status === window.google.maps.DirectionsStatus.OK) {
+          setDirectionsRoutePoints(result);
+        } else {
+          console.error("error");
+        }
+      }
+    );
+  };
   const onLoad = React.useCallback(function callback(map) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
     const bounds = new window.google.maps.LatLngBounds(center);
@@ -108,6 +134,18 @@ export const GoogleMapSection = () => {
           </OverlayViewF>
         </MarkerF>
       ) : null}
+
+      <DirectionsRenderer
+        directions={directionsRoutePoints}
+        options={{
+          polylineOptions: {
+            strokeColor: "#000",
+            strokeOpacity: 0.8,
+            strokeWeight: 5,
+          },
+          suppressMarkers: true,
+        }}
+      />
     </GoogleMap>
   );
 };
